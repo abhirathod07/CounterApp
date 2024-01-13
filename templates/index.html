@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Counter App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h2>Counter App</h2>
+    <form method="post" action="/">
+    <div id="counter-display">Counter: <span id="counter">{{ counter }}</span></div>
+    <br/>
+        <input type="hidden" name="counter" id="hidden-counter" value="{{ counter }}">
+    <button id="counter-btn" onclick="incrementCounter()">Click Me</button>
+     </form>
+    <script>
+        // JavaScript function to handle counter increment
+        function incrementCounter() {
+            // Get the current counter value
+            var currentCounter = parseInt(document.getElementById('counter').innerHTML);
+
+            // Increment the counter
+            currentCounter++;
+
+            // Update the counter display
+            document.getElementById('hidden-counter').value = currentCounter;
+            document.forms[0].submit();
+        }
+    </script>
+</body>
+</html>
